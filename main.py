@@ -1,9 +1,9 @@
 import requests
 
 
-def download(url: str):
+def download(url: str, filename: str) -> None:
     reg = requests.get(url)
-    with open('./test.zip', 'wb') as file:
+    with open('./%s.zip' % filename, 'wb') as file:
         file.write(reg.content)
 
 
@@ -15,5 +15,6 @@ def url_format(url: str) -> str:
 
 if __name__ == '__main__':
     url = input('URL:\n')
+    name = input('Filenames:\n')
     url = url_format(url)
-    download(url)
+    download(url, name)
